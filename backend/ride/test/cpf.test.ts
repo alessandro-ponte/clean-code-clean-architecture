@@ -1,16 +1,19 @@
-import CPF from '../src/CPF';
+import Cpf from '../src/Cpf';
 
-test("Deve validar um CPF válido", function () {
-    // given
-    const cpf = '380.126.828-42';
-    // when
-    const output = new CPF(cpf);
-    // then    
-    expect(output).toBeDefined();
+test.each([
+    "83432616074",
+    "74587887803",
+    "87175659520"
+])("Deve testar CPFs válidos", function (value: string) {    
+    const cpf = new Cpf(value);
+    expect(cpf.value).toBe(value);
 });
 
-test("Não deve validar um CPF inválido", function () {
-    // given
-    const cpf = '380.126.828-48';
-    expect(() => new CPF(cpf)).toThrow('invalid CPF');
+test.each([
+    "83432616076",
+    "99999999999",
+    "834326160",
+    ""    
+])("Não deve validar um CPF inválido", function (value: string) {
+    expect(() => new Cpf(value)).toThrow(new Error('Invalid cpf'))
 });
