@@ -23,7 +23,7 @@ export default class Ride {
                 price += segment.distance * this.OVERNIGHT_FARE;
             }
             if (segment.isOvernight() && segment.isSunday()) {
-                price = segment.distance * this.OVERNIGHT_SUNDAY_FARE;
+                price += segment.distance * this.OVERNIGHT_SUNDAY_FARE;
             }
             if (!segment.isOvernight() && segment.isSunday()) {
                 price += segment.distance * this.SUNDAY_FARE;

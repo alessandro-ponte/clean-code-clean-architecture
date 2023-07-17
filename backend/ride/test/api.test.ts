@@ -7,7 +7,7 @@ axios.defaults.validateStatus = function () {
 test("Deve fazer o cálculo do preço de uma corrida durante o dia", async function () {    
     const input = {
         segments: [
-        { from: {lat: 200, long: 200}, to: {lat: 200, long: 200}, date: "2021-03-01T10:00:00"}
+        { distance: 10, date: "2021-03-01T10:00:00"}
         ]
     };
     const response = await axios.post("http://localhost:3000/calculate_ride", input);
@@ -18,7 +18,7 @@ test("Deve fazer o cálculo do preço de uma corrida durante o dia", async funct
 test("Se a distância for inválida deve lançar um erro", async function () {    
     const input = {
         segments: [
-        { from: {lat: 'here', long: 200}, to: {lat: 200, long: 200}, date: "2021-03-01T10:00:00"}
+        { distance: -10, date: "2021-03-01T10:00:00"}
         ]
     };
     const response = await axios.post("http://localhost:3000/calculate_ride", input);
