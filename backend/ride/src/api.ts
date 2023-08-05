@@ -1,6 +1,8 @@
 import express from "express";
 import pgp from 'pg-promise';
 import Ride from "./Ride"
+import { calculate } from "./RideCalculator"
+import { validate } from "./CpfValidator"
 import Passenger from "./Passenger";
 import crypto from 'crypto';
 const app = express();
@@ -8,12 +10,8 @@ const app = express();
 app.use(express.json());
 
 app.post("/calculate_ride", function(req , res){    
-    try{        
-        const ride = new Ride();
-        for (const segment of req.body.segments) {
-            ride.addSegment(segment.distance, new Date(segment.date));
-        }
-        const price = ride.calculate();
+    try{
+        const price = calculate(req.body.segments);
         res.json({ price });
     } catch (e: any) {
         res.status(422).send(e.message);
@@ -24,6 +22,7 @@ app.post("/passengers", async function(req, res){
     try{
         const input = req.body;
         const passengerId = crypto.randomUUID();
+        if (!validate(req.body.document)) throw new Error('Invalid cpf');
         const connection = pgp()("postgres://postgres@localhost:5432/app");
         await connection.query('insert into cccat12.passenger (passenger_id, name, email, document) values ($1, $2, $3, $4)', [passengerId, input.name, input.email, input.document]);
         await connection.$pool.end();
@@ -51,6 +50,7 @@ app.post("/drivers", async function(req, res){
     try{
         const input = req.body;
         const driverId = crypto.randomUUID();
+        if (!validate(req.body.document)) throw new Error('Invalid cpf');
         const connection = pgp()("postgres://postgres@localhost:5432/app");
         await connection.query('insert into cccat12.driver (driver_id, name, email, document, car_plate) values ($1, $2, $3, $4, $5)', [driverId, input.name, input.email, input.document, input.carPlate]);
         await connection.$pool.end();

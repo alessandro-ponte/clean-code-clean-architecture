@@ -38,7 +38,7 @@ test("Deve cadastrar o passageiro quando informado todos os dados válidos", asy
     expect(output1.passengerId).toBeDefined();    
 });
 
-test.skip("Não deve cadastrar o passageiro com o cpf inválido", async function () {    
+test("Não deve cadastrar o passageiro com o cpf inválido", async function () {    
     const input = {
         name: 'Alessandro Ponte',
         email: 'alessandrosponte@gmail.com',
@@ -78,11 +78,11 @@ test("Deve cadastrar o motorista", async function () {
 });
 
 
-test.skip("Não deve cadastrar o motorista com cpf inválido", async function () {    
+test("Não deve cadastrar o motorista com cpf inválido", async function () {    
     const input = {
         name: 'Alessandro Ponte',
         email: 'alessandrosponte@gmail.com',
-        document: '17547870376',
+        document: '17547870371',
         carPlate: 'AAA9999'
     };
     const response = await axios.post("http://localhost:3000/drivers", input);    
