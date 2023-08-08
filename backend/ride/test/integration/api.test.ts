@@ -3,7 +3,7 @@ import axios from "axios"
 axios.defaults.validateStatus = function () {
     return true;
 };
-
+// broad integration test
 test("Deve fazer o cálculo do preço de uma corrida durante o dia", async function () {    
     const input = {
         segments: [
@@ -42,7 +42,7 @@ test("Não deve cadastrar o passageiro com o cpf inválido", async function () {
     const input = {
         name: 'Alessandro Ponte',
         email: 'alessandrosponte@gmail.com',
-        document: '17547870374'
+        document: '17547870370'
     };
     const response = await axios.post("http://localhost:3000/passengers", input);
     expect(response.status).toBe(422);
