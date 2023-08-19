@@ -1,3 +1,4 @@
+import Position from "../../domain/Position";
 import Ride from "../../domain/Ride";
 
 export default class CalculateRide {
@@ -7,8 +8,8 @@ export default class CalculateRide {
 
     async execute (input: Input): Promise<Output> {        
         const ride = new Ride();
-        for (const segment of input.segments) {
-            ride.addSegment(segment.distance, new Date(segment.date));
+        for (const position of input.positions) {
+            ride.addPosition(position.lat, position.long, new Date(position.date));
         }
         const price = ride.calculate();
         return {
@@ -18,7 +19,7 @@ export default class CalculateRide {
 }
 
 type Input = {
-    segments: { distance: number, date: Date }[];
+    positions: { lat: number, long: number, date: Date }[];
 }
 
 type Output = {
