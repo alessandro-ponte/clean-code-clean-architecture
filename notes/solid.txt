@@ -8,8 +8,12 @@ Separar coisas que mudam por motivos diferentes, responsabilidade significa moti
 
 DIP - Dependency Inversion Principle
 
-High level modules should not depende on low level modules
+High level modules should not depend on low level modules
 
 ISP - Interface Segregation Principle
 
 Não dependa de coisas, recursos, métodos, funções, que você não precisa
+
+OCP - Open/Closed Principle
+
+Devemos estar abertos para extensão e fechados para modificação
