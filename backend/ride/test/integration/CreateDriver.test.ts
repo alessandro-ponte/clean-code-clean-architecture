@@ -1,7 +1,7 @@
 import DriverRepository from "../../src/application/repository/DriverRepository";
 import CreateDriver from "../../src/application/usecase/CreateDriver";
 import GetDriver from "../../src/application/usecase/GetDriver";
-import Driver from "../../src/domain/Driver";
+import Driver from "../../src/domain/driver/Driver";
 import PgPromiseAdapter from "../../src/infra/database/PgPromiseAdapter";
 import DriverRepositoryDatabase from "../../src/infra/repository/DriverRepositoryDatabase";
 
