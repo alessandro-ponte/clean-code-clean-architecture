@@ -1,5 +1,6 @@
 import Ride from "../Ride";
 
+// DP State
 export default abstract class RideStatus {
     abstract value: string;
 
