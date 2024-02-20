@@ -19,7 +19,7 @@ npx jest --coverage
 ## Para rodar os testes de uma classe específica
 
 ```bash
-npx jest api.test.ts
+npx jest test/integration/api.test.ts
 ```
 
 ## Rodando a aplicação com nodemon
