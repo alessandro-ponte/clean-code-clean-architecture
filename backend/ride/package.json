@@ -2,7 +2,7 @@
   "name": "clean-code-clean-architecture",
   "version": "1.0.0",
   "description": "Curso de Clean Code e Clean Architecture - Turma 12 - Prof. Rodrigo Branas (https://app.branas.io)",
-  "main": "src/main.ts",
+  "main": "src/main_api.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
