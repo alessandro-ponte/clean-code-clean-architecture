@@ -1,0 +1,13 @@
+import { NextFunction, Request, Response } from 'express'
+
+export const errorHandling = async (
+  error: any,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  console.log('CAIU NO MIDDLEWARE DE ERROR', error)
+  console.log('CAIU NO MIDDLEWARE DE ERROR NAME', error.name)
+  console.log('CAIU NO MIDDLEWARE DE ERROR CODE', error.code)
+  console.log('IS INSTANCE', error instanceof CustomError)  
+}

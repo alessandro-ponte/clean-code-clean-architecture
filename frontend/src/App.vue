@@ -1,8 +1,11 @@
-<script setup lang="ts">
+<script setup lang="ts">  
+    import CreatePassenger from "./CreatePassenger.vue";
+    import CreateDriver from "./CreateDriver.vue";
 </script>
 
-<template>  
-  <div>branas.io</div>
+<template>
+    <CreatePassenger />
+    <CreateDriver />
 </template>
 
 <style scoped>
