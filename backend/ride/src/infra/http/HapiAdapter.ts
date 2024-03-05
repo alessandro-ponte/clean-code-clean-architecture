@@ -5,7 +5,11 @@ export default class HapiAdapter implements HttpServer {
     server: Hapi.Server;
 
     constructor () {
-        this.server = Hapi.server({});
+        this.server = Hapi.server({
+            routes: {
+                cors: true
+            }
+        });
     }
 
     on(method: string, url: string, callback: Function): void {

@@ -19,8 +19,8 @@ const getPassenger = new GetPassenger(passengerRepository);
 const driverRepository = new DriverRepositoryDatabase(connection);
 const createDriver = new CreateDriver(driverRepository);
 const getDriver = new GetDriver(driverRepository);
-// const httpServer = new ExpressAdapter();
-const httpServer = new HapiAdapter();
+const httpServer = new ExpressAdapter();
+// const httpServer = new HapiAdapter();
 new MainController(httpServer, calculateRide, createPassenger, getPassenger, createDriver, getDriver);
 httpServer.listen(3000);
 

@@ -1,7 +1,6 @@
 import express, {Request, Response} from "express";
 import HttpServer from "./HttpServer";
 import cors from 'cors';
-import errorHandlingMiddleware from "../middlewares/error-handling-middleware"
 
 // Frameworks and Drivers
 export default class ExpressAdapter implements HttpServer{
@@ -9,9 +8,8 @@ export default class ExpressAdapter implements HttpServer{
 
     constructor () {        
         this.app = express();        
-        this.app.use(cors());
         this.app.use(express.json());
-        this.app.use(errorHandlingMiddleware)
+        this.app.use(cors());
     }
 
     on(method: string, url: string, callback: Function): void {

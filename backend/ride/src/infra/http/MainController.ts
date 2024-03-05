@@ -20,8 +20,7 @@ export default class MainController {
             return output;
         });
         
-        httpServer.on("post", "/passengers", async function (params: any, body: any) {            
-            console.log(body);
+        httpServer.on("post", "/passengers", async function (params: any, body: any) {
             const output = await createPassenger.execute(body);        
             return output;
         });
@@ -31,8 +30,7 @@ export default class MainController {
             return output;    
         });
         
-        httpServer.on("post", "/drivers", async function (params: any, body: any) {   
-            console.log(body);         
+        httpServer.on("post", "/drivers", async function (params: any, body: any) {
             const output = await createDriver.execute(body);        
             return output;
         });
