@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
 import CreatePassengerVue from "../src/CreatePassenger.vue";
-import PassengerGatewayHttp from '../src/infra/gateway/PassengerGatewayHttp';
 import PassengerGateway from '../src/infra/gateway/PassengerGateway';
 
 function sleep(time: number) {
@@ -13,7 +12,7 @@ test("Deve criar um motorista", async function () {
 
     const passengerGateway: PassengerGateway = {
         async save (passenger: any): Promise<any> {
-            return { passengerId: "f282c08a-4f4c-4e97-be47-2080f3d4f069"}
+            return "f282c08a-4f4c-4e97-be47-2080f3d4f069"
         }
     }
     const wrapper = mount(CreatePassengerVue, {

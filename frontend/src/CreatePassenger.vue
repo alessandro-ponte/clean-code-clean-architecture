@@ -1,32 +1,24 @@
 <script setup lang="ts">
-  import { inject, ref } from 'vue'; // O ref torna uma variavel reativa
-  import axios from 'axios';
+  import { inject, ref } from 'vue'; // O ref torna uma variavel reativa  
 import PassengerGateway from './infra/gateway/PassengerGateway';
-
-  const name = ref('');
-  const email = ref('');
-  const document = ref('');
+import Passenger from './domain/passenger/Passenger';
+  
+  const passenger = ref(new Passenger("", "", "", ""));
   const passengerId = ref('');
 
   const passengerGateway = inject("passengerGateway") as PassengerGateway;
 
 
-  async function createPassenger () {
-    const input = {
-      name: name.value,
-      email: email.value,
-      document: document.value
-    }        
-    const output = await passengerGateway.save(input);
-    passengerId.value = output.passengerId;
+  async function createPassenger () {    
+    passengerId.value = await passengerGateway.save(passenger.value);     
   }
 </script>
 
 <template>  
   <div>
-    <input class="passenger-name" v-model="name" />
-    <input class="passenger-email" v-model="email" />
-    <input class="passenger-document" v-model="document" />
+    <input class="passenger-name" v-model="passenger.name" />
+    <input class="passenger-email" v-model="passenger.email" />
+    <input class="passenger-document" v-model="passenger.document" />
     <button class="create-passenger-button" @click="createPassenger()" >create passenger</button>
     <div class="passenger-id">{{ passengerId }}</div>
   </div>
